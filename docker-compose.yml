@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
+    environment:
+      - MODEL_HOST=model:5000
+      - PORT=${PORT}
+      - JWT_SECRET=${JWT_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - GOOGLE_CALLBACK_URL=${GOOGLE_CALLBACK_URL}
+      - DOCKER_MODEL=ozzey72/biobert-llm-${DOCKER_MODEL}:latest
+    depends_on:
+      - model
+    networks:
+      - app-network
+
+  model:
+    image: ozzey72/biobert-llm-${DOCKER_MODEL}:latest
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
