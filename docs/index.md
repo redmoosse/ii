@@ -28,5 +28,3 @@ This backend allows you to integrate multiple pretrained models (e.g., BioBERT, 
 - [🚀 Launch Guide](./docs/launch.md)
 - [🧩 Adding New Models](./docs/adding-models.md)
 - [📡 API Usage (REST & WebSocket)](./docs/api-usage.md)
-- [📊 Benchmarking and Results](./docs/benchmark.md)
-- [🧱 Project Architecture](./docs/architecture.md)

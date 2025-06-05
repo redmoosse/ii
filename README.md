@@ -30,7 +30,7 @@
 ├── Dockerfile             # Dockerfile for building the NestJS app
 ├── .env                   # Environment variables
 ├── docs/                  # Project documentation
-```
+
 
 ## 📌 TODO
 
@@ -48,4 +48,4 @@
 - [🧩 Adding New Models](./docs/adding-models.md)
 - [📡 API Usage (REST & WebSocket)](./docs/api-usage.md)
 - [📊 Benchmarking and Results](./docs/benchmark.md)
-- [🧱 Project Architecture](./docs/architecture.md)
+

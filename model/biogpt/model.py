@@ -10,8 +10,6 @@ def remove_tags(text: str):
     text = text.replace(" <","")
     text = text.replace(" >","")
     text = text.replace(" /","")
-    text = text.replace("ABSTRACT","")
-    text = text.replace("ABSTRACT","")
     return text
 
 VALID_DOCTORS = [
@@ -64,7 +62,7 @@ class BioModel():
         diagnosis = remove_tags(diagnosis_output[0])
         result_diagnosis = diagnosis[len(diagnosis_prompt):-1]
 
-        direction_prompt = f"""{diagnosis} With these symptomes the patient should be treated with"""
+        direction_prompt = f"""{diagnosis} With these symptomes the patient should be referred to a"""
         direction_output = self.run_biogpt_infence(
             prompt=direction_prompt,
             min_length=1,
@@ -77,10 +75,11 @@ class BioModel():
 
         print(f"\nUser prompt:\n{query}\n")
         print(f"Diagnosis:{result_diagnosis}\n")
-        print(f"Treatment:{result_direction}\n")
+        print(f"Direction:{result_direction}\n")
 
         result = {
-            "answer": f"Diagnosis: {result_diagnosis} and possible treatment is {result_direction}"
+            "diagnosis": result_diagnosis,
+            "direction": result_direction
         }
 
         return json.dumps(result)

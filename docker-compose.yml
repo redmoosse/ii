@@ -18,15 +18,11 @@ services:
       - app-network
 
   model:
-    build:
-      context: .
-    image: ozzey72/biobert-llm-backend:latest
+    image: ozzey72/biobert-llm-${DOCKER_MODEL}:latest
     ports:
       - "5000:5000"
     networks:
       - app-network
-    env_file:
-      - .env
 
 networks:
   app-network:
