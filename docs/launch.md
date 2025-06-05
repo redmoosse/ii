@@ -34,7 +34,8 @@ Ensure that the environment variable DOCKER_MODEL is set before running if requi
 git clone https://github.com/OzzeY72/BiOBERT-LLM-Backend.git 
 cd BiOBERT-LLM-Backend 
 cp .env.scheme .env # 🔑 Add CLIENT_ID and CLIENT_SECRET from Google API Console before launch 
-npm install npm run dev 
+npm install
+npm run dev
 ```
 This will launch backend on port 3000
 
@@ -49,6 +50,8 @@ MODEL_HOST=localhost:5000
 The following model directories are currently available under the model/ folder:
 
 biobert – BioBERT transformer fine-tuned to classification biomedical text
+
+biobert-classificator - BioBERT transformer fine-tuned to classification biomedical text to 35 categories
 
 biogpt – BioGPT language model for medical text generation
 

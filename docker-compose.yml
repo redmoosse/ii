@@ -11,18 +11,22 @@ services:
       - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
       - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
       - GOOGLE_CALLBACK_URL=${GOOGLE_CALLBACK_URL}
-      - DOCKER_MODEL=ozzey72/biobert-llm-${DOCKER_MODEL}:latest
+      - DOCKER_MODEL=ozzey72/biobert-llm-${DOCKER_MODEL}
     depends_on:
       - model
     networks:
       - app-network
 
   model:
-    image: ozzey72/biobert-llm-${DOCKER_MODEL}:latest
+    build:
+      context: .
+    image: ozzey72/biobert-llm-backend:latest
     ports:
       - "5000:5000"
     networks:
       - app-network
+    env_file:
+      - .env
 
 networks:
   app-network:

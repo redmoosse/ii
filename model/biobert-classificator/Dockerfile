@@ -7,9 +7,6 @@ WORKDIR /app
 COPY . .
 # RUN pip install -r requirements.txt
 
-# # Preload model from HuggingFace
-# RUN python preload.py
-
 EXPOSE 5000
 
 CMD ["python", "index.py"]

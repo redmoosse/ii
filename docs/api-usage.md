@@ -45,7 +45,7 @@ Successful response:
 
 ```json
 {
-  "access_token": "your-jwt-token",
+  "access_token": "jwt-token",
   "token_type": "bearer"
 }
 ```

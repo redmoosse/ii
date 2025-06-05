@@ -1,0 +1,38 @@
+name: Build & Push All Models
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'model/**'
+
+jobs:
+  build-and-push-models:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        model:
+          - base-cpu
+          - biobert
+          - biogpt
+          - biobert-classificator
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push model image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./model/${{ matrix.model }}
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/biobert-llm-${{ matrix.model }}:latest

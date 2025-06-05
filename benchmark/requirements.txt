@@ -1,0 +1,7 @@
+torch
+logging
+psutil
+wmi
+transformers
+protobuf
+sacremoses
